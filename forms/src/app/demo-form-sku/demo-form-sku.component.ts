@@ -12,4 +12,8 @@ export class DemoFormSkuComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(form: any): void {
+  	console.log('submitted value:', form);
+  }
+
 }

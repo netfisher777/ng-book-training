@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, AbstractControl, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, AbstractControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-app-demo-form-sku-with-builder',

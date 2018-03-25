@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
-import { AppComponent } from './app.component';
-import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
-import { AppDemoFormSkuWithBuilderComponent } from './app-demo-form-sku-with-builder/app-demo-form-sku-with-builder.component';
+import {AppComponent} from './app.component';
+import {DemoFormSkuComponent} from './demo-form-sku/demo-form-sku.component';
+import {AppDemoFormSkuWithBuilderComponent} from './app-demo-form-sku-with-builder/app-demo-form-sku-with-builder.component';
 
 
 @NgModule({
@@ -22,4 +22,5 @@ import { AppDemoFormSkuWithBuilderComponent } from './app-demo-form-sku-with-bui
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

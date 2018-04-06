@@ -22,7 +22,7 @@ export class DemoFormWithValidationsExplicitComponent implements OnInit {
   }
 
   onSubmit(value: string): void {
-    console.log('submitted value 3:', value, this.sku);
+    console.log('submitted value 3:', value);
   }
 
 }

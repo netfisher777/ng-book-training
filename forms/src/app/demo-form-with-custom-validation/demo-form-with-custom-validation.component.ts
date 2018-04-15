@@ -28,7 +28,7 @@ export class DemoFormWithCustomValidationComponent implements OnInit {
   }
 
   onSubmit(value: string): void {
-    console.log('submitted value 4:', value);
+    console.log('submitted value 5:', value);
   }
 
 }

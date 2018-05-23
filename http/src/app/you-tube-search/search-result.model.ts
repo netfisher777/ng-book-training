@@ -6,10 +6,10 @@ export class SearchResult {
   videoUrl: string;
 
   constructor(obj?: any) {
-    this.id = obj && obj.id;
-    this.title = obj && obj.title;
-    this.description = obj && obj.description;
-    this.thumbnailUrl = obj && obj.thumbnailUrl;
-    this.videoUrl = obj && obj.videoUrl;
+    this.id = obj && obj.id || null;
+    this.title = obj && obj.title || null;
+    this.description = obj && obj.description || null;
+    this.thumbnailUrl = obj && obj.thumbnailUrl || null;
+    this.videoUrl = obj && obj.videoUrl || null;
   }
 }

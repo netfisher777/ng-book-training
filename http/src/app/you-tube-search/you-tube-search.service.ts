@@ -2,6 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {SearchResult} from './search-result.model';
+import {map} from 'rxjs/internal/operators';
 
 export const YOUTUBE_API_KEY = 'AIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk';
 export const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -25,7 +26,10 @@ export class YouTubeSearchService {
     ].join('&');
     const queryUrl = `${this.apiUrl}?${params}`;
 
-    return this.http.get<SearchResult[]>(queryUrl);
+    return this.http.get<SearchResult[]>(queryUrl).pipe(map(response => {
+      console.log(response);
+      return [];
+    }));
   }
 
 }

@@ -6,12 +6,14 @@ import { SimpleHttpComponent } from './simple-http/simple-http.component';
 import {HttpClientModule} from '@angular/common/http';
 import { YouTubeSearchComponent } from './you-tube-search/you-tube-search.component';
 import {youTubeSearchInjectables} from './you-tube-search/you-tube-search.injectables';
+import {SearchBoxComponent} from './you-tube-search/search-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleHttpComponent,
-    YouTubeSearchComponent
+    YouTubeSearchComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,

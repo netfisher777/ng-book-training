@@ -25,10 +25,17 @@ export class YouTubeSearchService {
       `maxResults=10`
     ].join('&');
     const queryUrl = `${this.apiUrl}?${params}`;
-
+    console.log('start searching...');
     return this.http.get<SearchResult[]>(queryUrl).pipe(map(response => {
       console.log(response);
-      return [];
+      return <any>response['items'].map((item) => {
+        return new SearchResult({
+          id: item.id.videoId,
+          title: item.snippet.title,
+          description: item.snippet.description,
+          thumbnailUrl: item.snippet.thumbnails.high.url
+        });
+      });
     }));
   }
 

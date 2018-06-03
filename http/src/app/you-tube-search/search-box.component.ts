@@ -25,8 +25,7 @@ export class SearchBoxComponent implements OnInit{
       tap(() => this.loading.emit(true)),
       map((query: string) => this.youtube.search(query)),
       switchAll()
-    )
-      .subscribe(
+    ).subscribe(
         (results: SearchResult[]) => {
           this.loading.emit(false);
           this.results.emit(results);

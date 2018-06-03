@@ -7,13 +7,17 @@ import {HttpClientModule} from '@angular/common/http';
 import { YouTubeSearchComponent } from './you-tube-search/you-tube-search.component';
 import {youTubeSearchInjectables} from './you-tube-search/you-tube-search.injectables';
 import {SearchBoxComponent} from './you-tube-search/search-box.component';
+import {SearchResultComponent} from './you-tube-search/search-result.component';
+import { MoreHttpRequestsComponent } from './more-http-requests/more-http-requests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleHttpComponent,
     YouTubeSearchComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    SearchResultComponent,
+    MoreHttpRequestsComponent
   ],
   imports: [
     BrowserModule,

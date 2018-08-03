@@ -1,23 +1,45 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class SpotifyService {
 
-  constructor(private http: HttpClient) {
+  static BASE_URL = 'https://api.spotify.com/v1';
 
+  constructor(private http: HttpClient) {
   }
 
-  searchTrack(query: string) {
-    const params: string = [
-      `q=${query}`,
-      `type=track`
-    ].join('&');
+  query(URL: string, params?: Array<string>): Observable<any[]> {
+    let queryURL = `${SpotifyService.BASE_URL}${URL}`;
+    if (params) {
+      queryURL = `${queryURL}?${params.join('&')}`;
+    }
+    const apiKey = environment.spotifyApiKey;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${apiKey}`
+    });
+    const options = {
+      headers: headers
+    };
+    return this.http.get(queryURL, options).pipe(map((response: any) => response.json()));
+  }
 
-    const queryURL = `https://api.spotify.com/v1/search?${params}`;
-    const httpRequest = new HttpRequest('GET', queryURL);
-    return this.http.request(httpRequest).pipe(map((response: any) => response.json()));
+  search(query: string, type: string): Observable<any[]> {
+    return this.query('/search', [
+      `q=${query}`,
+      `type=${type}`
+    ]);
+  }
+
+  searchTrack(query: string): Observable<any[]> {
+    return this.search(query, 'track');
   }
 
 }
+
+export const SPOTIFY_PROVIDERS: Array<any> = [
+  { provide: SpotifyService, useClass: SpotifyService }
+];

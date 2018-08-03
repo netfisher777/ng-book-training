@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   query: string;
-  results: Object;
+  results: any;
 
   constructor(private spotifyService: SpotifyService,
               private router: Router,
@@ -37,6 +37,7 @@ export class SearchComponent implements OnInit {
   }
 
   renderResults(results: any): void {
+    console.log('renderResults()', results);
     this.results = null;
     if (results && results.tracks && results.tracks.item) {
       this.results = results.tracks.item;

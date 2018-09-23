@@ -2,7 +2,7 @@ import {Observable, Subject} from 'rxjs';
 import {Message} from './message.model';
 import {Thread} from '../thread/thread.model';
 import {User} from '../user/user.model';
-import {filter, scan} from 'rxjs/operators';
+import {filter, publishReplay, refCount, scan} from 'rxjs/operators';
 
 const initialMessages: Message[] = [];
 
@@ -15,7 +15,9 @@ export class MessagesService {
     this.messages = this.updates.pipe(
       scan((messages: Message[], operation: IMessagesOperation) => {
         return operation(messages);
-      }, initialMessages)
+      }, initialMessages),
+      publishReplay(1),
+      refCount()
     );
   }
 

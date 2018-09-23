@@ -2,7 +2,7 @@ import {Observable, Subject} from 'rxjs';
 import {Message} from './message.model';
 import {Thread} from '../thread/thread.model';
 import {User} from '../user/user.model';
-import {filter, publishReplay, refCount, scan} from 'rxjs/operators';
+import {filter, map, publishReplay, refCount, scan} from 'rxjs/operators';
 
 const initialMessages: Message[] = [];
 
@@ -10,6 +10,7 @@ export class MessagesService {
   newMessages: Subject<Message> = new Subject<Message>();
   messages: Observable<Message[]>;
   updates: Subject<any> = new Subject<any>();
+  create: Subject<Message> = new Subject<Message>();
 
   constructor() {
     this.messages = this.updates.pipe(
@@ -18,6 +19,14 @@ export class MessagesService {
       }, initialMessages),
       publishReplay(1),
       refCount()
+    );
+
+    this.create.pipe(
+      map((message: Message): IMessagesOperation => {
+        return (messages: Message[]) => {
+          return messages.concat(message);
+        };
+      })
     );
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -8,10 +8,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ProductsComponent {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
 
   goToProduct(id: string): void {
-    this.router.navigate(['./', id], {relativeTo: this.route});
+    this.router.navigate(['./', id], { relativeTo: this.route });
   }
 
 }
